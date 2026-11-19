@@ -1,0 +1,30 @@
+{
+ "code": 0,
+ "message": "OK",
+ "timestamp": "1794842559",
+ "data": {
+  "list": [
+   {
+    "id": "17",
+    "name": "The Hearth Fire Beckons the Starry Flow",
+    "chars": [
+     {
+      "id": "0e691c08a09d81bc7f8fa14a1cb03561",
+      "pcLink": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=1&gameEntryId=1279",
+      "pic": "https://static.skport.com/image/common/20261008/90a7d5f6b2f4a8613da462ee6eacfa3d.png",
+      "rarity": "rarity_6",
+      "name": "",
+      "dotType": "label_type_up"
+     }
+    ],
+    "poolStartAtTs": "1793898000",
+    "sortId": 17,
+    "poolEndAtTs": "1795557600",
+    "startAtTs": "1793898000",
+    "endAtTs": "1795557600",
+    "europePoolStartAtTs": "1793898000",
+    "europePoolEndAtTs": "1795510800"
+   }
+  ]
+ }
+}

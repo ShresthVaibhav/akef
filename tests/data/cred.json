@@ -1,0 +1,10 @@
+{
+ "code": 0,
+ "message": "OK",
+ "timestamp": "1794842554",
+ "data": {
+  "cred": "fakecredfakecredfakecredfakecred",
+  "userId": "8000000000001",
+  "token": "0123456789abcdef0123456789abcdef"
+ }
+}

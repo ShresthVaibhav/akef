@@ -1,0 +1,51 @@
+{
+ "code": 0,
+ "message": "OK",
+ "timestamp": "1794842559",
+ "data": {
+  "list": [
+   {
+    "id": "3",
+    "name": "Moongleam Issue",
+    "weapons": [
+     {
+      "id": "2f9804247b479e029c6b702bf07741a0",
+      "pcLink": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=2&gameEntryId=1283",
+      "pic": "https://static.skport.com/image/common/20261008/67c1c448971e573e2ac0945b51c6795d.png",
+      "rarity": "rarity_6",
+      "name": "",
+      "dotType": "label_type_up"
+     }
+    ],
+    "sortId": 3,
+    "poolStartAtTs": "1793851200",
+    "poolEndAtTs": "1798171200",
+    "startAtTs": "1793851200",
+    "endAtTs": "1798171200",
+    "europePoolStartAtTs": "1793898000",
+    "europePoolEndAtTs": "1798171200"
+   },
+   {
+    "id": "2",
+    "name": "Seal of Jade Issue",
+    "weapons": [
+     {
+      "id": "d24fe31909793faf478670f89da000eb",
+      "pcLink": "https://wiki.skport.com/endfield/detail?mainTypeId=1&subTypeId=2&gameEntryId=1280",
+      "pic": "https://static.skport.com/image/common/20261008/8665c9b0ab3626f59bba07d4410fe248.png",
+      "rarity": "rarity_6",
+      "name": "",
+      "dotType": ""
+     }
+    ],
+    "sortId": 2,
+    "poolStartAtTs": "1792033200",
+    "poolEndAtTs": "1796400000",
+    "startAtTs": "1791993600",
+    "endAtTs": "1796400000",
+    "europePoolStartAtTs": "1792033200",
+    "europePoolEndAtTs": "1796400000"
+   }
+  ]
+ }
+}

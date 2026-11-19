@@ -1,0 +1,17 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.idea/
+.vscode/
+.env
+token.txt
+raw/
+skport_login.json
+pulls.json
+pulls.csv
+.skport_token

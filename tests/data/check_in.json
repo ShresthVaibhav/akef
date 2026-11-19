@@ -1,0 +1,20 @@
+{
+ "code": 0,
+ "message": "OK",
+ "timestamp": "1794842600",
+ "data": {
+  "ts": "0",
+  "awardIds": [
+   {"id": "endfield_attendance_8_90", "type": 1},
+   {"id": "endfield_attendance_1_2", "type": 2}
+  ],
+  "resourceInfoMap": {
+   "endfield_attendance_1_2": {"id": "endfield_attendance_1_2", "count": 2, "name": "Intermediate Combat Record", "icon": "https://static.skport.com/asset/endfield_attendance/921A397E2765462C009B939E0CD92606.png"},
+   "endfield_attendance_4_2": {"id": "endfield_attendance_4_2", "count": 2, "name": "Arms INSP Kit", "icon": "https://static.skport.com/asset/endfield_attendance/0dea0bc0fd87138df322e8a254a6999f.png"},
+   "endfield_attendance_8_90": {"id": "endfield_attendance_8_90", "count": 90, "name": "Oroberyl", "icon": "https://static.skport.com/asset/endfield_attendance/8ed434a6cdb173c96ed0572115112f93.png"}
+  },
+  "tomorrowAwardIds": [
+   {"id": "endfield_attendance_4_2", "type": 2}
+  ]
+ }
+}

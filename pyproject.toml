@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "akef"
+version = "0.3.0"
+description = "Async Python wrapper for Arknights: Endfield, SKPORT accounts, Enka profiles and final stats"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "SORA", email = "shresthvaibhav13@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = ["aiohttp>=3.9", "pydantic>=2.5"]
+keywords = ["arknights", "endfield", "skport", "enka", "gryphline", "api", "async"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Games/Entertainment",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/ShresthVaibhav/akef"
+Documentation = "https://github.com/ShresthVaibhav/akef/tree/main/docs"
+Issues = "https://github.com/ShresthVaibhav/akef/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[tool.setuptools.packages.find]
+include = ["akef*"]
+
+[tool.setuptools.package-data]
+akef = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true

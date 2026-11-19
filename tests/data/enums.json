@@ -1,0 +1,529 @@
+{
+ "code": 0,
+ "message": "OK",
+ "timestamp": "1794842559",
+ "data": {
+  "rarities": [
+   {
+    "key": "rarity_6",
+    "value": "6"
+   },
+   {
+    "key": "rarity_5",
+    "value": "5"
+   },
+   {
+    "key": "rarity_4",
+    "value": "4"
+   },
+   {
+    "key": "rarity_3",
+    "value": "3"
+   }
+  ],
+  "professions": [
+   {
+    "key": "profession_assault",
+    "value": "Striker"
+   },
+   {
+    "key": "profession_vanguard",
+    "value": "Vanguard"
+   },
+   {
+    "key": "profession_guard",
+    "value": "Guard"
+   },
+   {
+    "key": "profession_defender",
+    "value": "Defender"
+   },
+   {
+    "key": "profession_supporter",
+    "value": "Supporter"
+   },
+   {
+    "key": "profession_caster",
+    "value": "Caster"
+   }
+  ],
+  "charProperties": [
+   {
+    "key": "char_property_physical",
+    "value": "Physical"
+   },
+   {
+    "key": "char_property_natural",
+    "value": "Nature"
+   },
+   {
+    "key": "char_property_cryst",
+    "value": "Cryo"
+   },
+   {
+    "key": "char_property_pulse",
+    "value": "Electric"
+   },
+   {
+    "key": "char_property_fire",
+    "value": "Heat"
+   }
+  ],
+  "weaponTypes": [
+   {
+    "key": "weapon_type_sword",
+    "value": "Sword"
+   },
+   {
+    "key": "weapon_type_lance",
+    "value": "Polearm"
+   },
+   {
+    "key": "weapon_type_pistol",
+    "value": "Handcannon"
+   },
+   {
+    "key": "weapon_type_claymores",
+    "value": "Greatsword"
+   },
+   {
+    "key": "weapon_type_wand",
+    "value": "Arts Unit"
+   }
+  ],
+  "skillTypes": [
+   {
+    "key": "skill_type_combo_skill",
+    "value": "Combo Skill"
+   },
+   {
+    "key": "skill_type_ultimate_skill",
+    "value": "Ultimate"
+   },
+   {
+    "key": "skill_type_normal_skill",
+    "value": "Battle Skill"
+   },
+   {
+    "key": "skill_type_normal_attack",
+    "value": "Basic Attack"
+   }
+  ],
+  "skillProperties": [
+   {
+    "key": "skill_property_physical",
+    "value": "Physical"
+   },
+   {
+    "key": "skill_property_natural",
+    "value": "Nature"
+   },
+   {
+    "key": "skill_property_cryst",
+    "value": "Cryo"
+   },
+   {
+    "key": "skill_property_pulse",
+    "value": "Electric"
+   },
+   {
+    "key": "skill_property_fire",
+    "value": "Heat"
+   }
+  ],
+  "labelTypes": [
+   {
+    "key": "label_type_new",
+    "value": "New"
+   },
+   {
+    "key": "label_type_preview",
+    "value": "åç»"
+   },
+   {
+    "key": "label_type_up",
+    "value": "Up"
+   },
+   {
+    "key": "label_type_limited",
+    "value": "éå®"
+   },
+   {
+    "key": "label_type_time_limited",
+    "value": "éæ¶"
+   },
+   {
+    "key": "label_type_foresee",
+    "value": "é¢å"
+   },
+   {
+    "key": "label_type_remake",
+    "value": "å¤å»"
+   }
+  ],
+  "equipRarities": [
+   {
+    "key": "equip_rarity_5",
+    "value": "Gold"
+   },
+   {
+    "key": "equip_rarity_4",
+    "value": "Purple"
+   },
+   {
+    "key": "equip_rarity_3",
+    "value": "Blue"
+   },
+   {
+    "key": "equip_rarity_2",
+    "value": "Green"
+   },
+   {
+    "key": "equip_rarity_1",
+    "value": "Gray"
+   }
+  ],
+  "equipTypes": [
+   {
+    "key": "equip_type_edc",
+    "value": "Kit"
+   },
+   {
+    "key": "equip_type_hand",
+    "value": "Gloves"
+   },
+   {
+    "key": "equip_type_body",
+    "value": "Armor"
+   }
+  ],
+  "equipLevels": [
+   {
+    "key": "equip_level_53",
+    "value": "53"
+   },
+   {
+    "key": "equip_level_50",
+    "value": "50"
+   },
+   {
+    "key": "equip_level_36",
+    "value": "36"
+   },
+   {
+    "key": "equip_level_28",
+    "value": "28"
+   },
+   {
+    "key": "equip_level_20",
+    "value": "20"
+   },
+   {
+    "key": "equip_level_10",
+    "value": "10"
+   },
+   {
+    "key": "equip_level_73",
+    "value": "73"
+   },
+   {
+    "key": "equip_level_70",
+    "value": "70"
+   },
+   {
+    "key": "equip_level_60",
+    "value": "60"
+   }
+  ],
+  "activeEffectTypes": [
+   {
+    "key": "active_effect_type_heal",
+    "value": "Recovery"
+   },
+   {
+    "key": "active_effect_type_revive",
+    "value": "Resuscitate"
+   },
+   {
+    "key": "active_effect_type_buff",
+    "value": "Buff"
+   }
+  ],
+  "passiveEffectTypes": [
+   {
+    "key": "passive_effect_type_buff",
+    "value": "Buff"
+   },
+   {
+    "key": "passive_effect_type_heal",
+    "value": "Recovery"
+   },
+   {
+    "key": "passive_effect_type_revive",
+    "value": "Resuscitate"
+   }
+  ],
+  "equipProperties": [
+   {
+    "key": "equip_attr_atk",
+    "value": "ATK"
+   },
+   {
+    "key": "equip_attr_atk",
+    "value": "ATK"
+   },
+   {
+    "key": "equip_attr_max_hp",
+    "value": "HP"
+   },
+   {
+    "key": "equip_attr_max_hp",
+    "value": "HP"
+   },
+   {
+    "key": "equip_attr_critical_rate",
+    "value": "Critical Rate"
+   },
+   {
+    "key": "equip_attr_physical_and_spellInfliction_enhance",
+    "value": "Arts Intensity"
+   },
+   {
+    "key": "equip_attr_heal_output_increase",
+    "value": "Treatment Bonus"
+   },
+   {
+    "key": "equip_attr_physical_damage_increase",
+    "value": "Physical DMG Bonus"
+   },
+   {
+    "key": "equip_attr_ultimate_sp_gain_scalar",
+    "value": "ULT Efficiency"
+   },
+   {
+    "key": "equip_attr_normal_attack_damage_increase",
+    "value": "Basic Attack DMG Bonus"
+   },
+   {
+    "key": "equip_attr_normal_skill_damage_increase",
+    "value": "Battle Skill DMG Bonus"
+   },
+   {
+    "key": "equip_attr_combo_skill_damage_increase",
+    "value": "Combo Skill DMG Bonus"
+   },
+   {
+    "key": "equip_attr_ultimate_skill_damage_increase",
+    "value": "Ultimate DMG Bonus"
+   },
+   {
+    "key": "equip_attr_damage_to_broken_unit_increase",
+    "value": "DMG vs. Staggered Bonus"
+   },
+   {
+    "key": "equip_main",
+    "value": "Main Attribute"
+   },
+   {
+    "key": "equip_main",
+    "value": "Main Attribute"
+   },
+   {
+    "key": "equip_attr_cryst_and_pulse_damage_increase",
+    "value": "Cryo & Electric DMG"
+   },
+   {
+    "key": "equip_all_skill_damage_increase",
+    "value": "All Skill DMG"
+   },
+   {
+    "key": "equip_sub",
+    "value": "Secondary Attribute"
+   },
+   {
+    "key": "equip_sub",
+    "value": "Secondary Attribute"
+   },
+   {
+    "key": "equip_attr_all_damage_taken_scalar",
+    "value": "Final DMG Reduction"
+   },
+   {
+    "key": "equip_fire_and_natural_damage_increase",
+    "value": "Heat & Nature DMG"
+   },
+   {
+    "key": "equip_spell_damage_increase",
+    "value": "Arts DMG"
+   }
+  ],
+  "equipAbilities": [
+   {
+    "key": "equip_attr_str",
+    "value": "Strength"
+   },
+   {
+    "key": "equip_attr_agi",
+    "value": "Agility"
+   },
+   {
+    "key": "equip_attr_wisd",
+    "value": "Intellect"
+   },
+   {
+    "key": "equip_attr_will",
+    "value": "Will"
+   }
+  ],
+  "suitTypes": [
+   {
+    "key": "508f82db8e94556f724c4fbbfbf3e0b0",
+    "value": "Eternal Xiranite"
+   },
+   {
+    "key": "f394fa805de26d20af37b04c5840b1d2",
+    "value": "Type 50 Yinglung"
+   },
+   {
+    "key": "40e6cd5cb6531138c7fda69d3bff1c76",
+    "value": "Pulser Labs"
+   },
+   {
+    "key": "acc7746b79b8757f74e9d79749cba8c9",
+    "value": "AIC Fieldwork"
+   },
+   {
+    "key": "805e591c25158a60162ba70f3300928a",
+    "value": "Deep Rampart"
+   },
+   {
+    "key": "1a4c13870df449ee376d8ed5e8dd9204",
+    "value": "Tide Surge"
+   },
+   {
+    "key": "a68b5b89b9e323d3d557fb178e5bb36c",
+    "value": "Ãthertech"
+   },
+   {
+    "key": "83bebe5e37738300a7787a4fead16633",
+    "value": "Bonekrusha"
+   },
+   {
+    "key": "f891b30534b3ec5b8f6c3774917009c4",
+    "value": "Mordvolt Insulation"
+   },
+   {
+    "key": "2a50c1685223ad1c8ee798bc66ab8ac3",
+    "value": "MI Security"
+   },
+   {
+    "key": "6f111f96a39d526ec108f4896079b7e5",
+    "value": "LYNX"
+   },
+   {
+    "key": "0307fe72af7e55f76cf375be267d636d",
+    "value": "Aburrey's Legacy"
+   },
+   {
+    "key": "0803374d004606a0eb4fe79dd7d614f3",
+    "value": "Frontiers"
+   },
+   {
+    "key": "d071c07e1a1665f0fe5eae0d18d37a87",
+    "value": "Mordvolt Resistant"
+   },
+   {
+    "key": "8a46e433f86173ae5ba81f4f0f2cfff0",
+    "value": "Roving MSGR"
+   },
+   {
+    "key": "6d140bbabeb8636460161516ca659d45",
+    "value": "AIC Light"
+   },
+   {
+    "key": "17d901698b54205436bcb50905d4d26d",
+    "value": "AIC Heavy"
+   },
+   {
+    "key": "f9c31f6fb42099bbcdc79cb71b65e2ed",
+    "value": "Armored MSGR"
+   },
+   {
+    "key": "1d6477b5665f05daa36c63ba24b8cf64",
+    "value": "Hot Work"
+   },
+   {
+    "key": "50d183755f65e882454064176c3c3132",
+    "value": "Swordmancer"
+   },
+   {
+    "key": "91a23e201bd0d49f3cbab60dd71588b8",
+    "value": "Catastrophe"
+   },
+   {
+    "key": "0b8830f8e80c7ca94230596a99d614a4",
+    "value": "Xiranflow"
+   },
+   {
+    "key": "22fc1796d3f02ea400528cd0fe452999",
+    "value": "Qingbo"
+   },
+   {
+    "key": "b0a4a678c2b091f45df836c1bf22b42e",
+    "value": "Grizzled Edge"
+   }
+  ],
+  "achievementFirstCategories": [
+   {
+    "key": "achv_type_quest",
+    "value": "Chapter"
+   },
+   {
+    "key": "achv_type_battle",
+    "value": "Technical"
+   },
+   {
+    "key": "achv_type_adventure",
+    "value": "Regional"
+   },
+   {
+    "key": "achv_type_growth",
+    "value": "Progression"
+   },
+   {
+    "key": "achv_type_factory",
+    "value": "Construction"
+   },
+   {
+    "key": "achv_type_social",
+    "value": "Social"
+   },
+   {
+    "key": "achv_type_event",
+    "value": "Event"
+   },
+   {
+    "key": "achv_type_hide",
+    "value": "Wondrous"
+   }
+  ],
+  "gemRarities": [
+   {
+    "key": "item_gem_rarity_5",
+    "value": "Flawless Essence"
+   },
+   {
+    "key": "item_gem_rarity_2",
+    "value": "Stable Essence"
+   },
+   {
+    "key": "item_gem_rarity_3",
+    "value": "Clean Essence"
+   },
+   {
+    "key": "item_gem_rarity_4",
+    "value": "Pure Essence"
+   }
+  ]
+ }
+}

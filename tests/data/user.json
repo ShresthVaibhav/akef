@@ -1,0 +1,47 @@
+{
+ "code": 0,
+ "message": "OK",
+ "timestamp": "1794842560",
+ "data": {
+  "user": {
+   "basicUser": {
+    "id": "8000000000001",
+    "nickname": "user_0000000000001",
+    "profile": "",
+    "avatarCode": 5,
+    "avatar": "https://static.skport.com/image/common/20251016/9d5a510ff16a7f765e788807b05af374.png",
+    "gender": 0,
+    "status": 1,
+    "operationStatus": 30,
+    "identity": 1,
+    "kind": 1,
+    "moderatorStatus": 4,
+    "moderatorChangeTime": 0,
+    "createdAt": "1779731249",
+    "latestLoginAt": "1794842554"
+   },
+   "pendant": {
+    "id": 0,
+    "iconUrl": "",
+    "title": "",
+    "description": ""
+   },
+   "background": null
+  },
+  "userRts": {
+   "follow": "0",
+   "fans": "0",
+   "liked": "0"
+  },
+  "userSanctionList": [],
+  "userInfoApply": {},
+  "moderator": {
+   "isModerator": false,
+   "operations": [],
+   "role": "ROLE_UNSPECIFIED",
+   "since": "0",
+   "status": 0,
+   "gameOperations": {}
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "code": 0,
+ "message": "OK",
+ "timestamp": "1794842554",
+ "data": {
+  "list": [
+   {
+    "appCode": "endfield",
+    "appName": "ææ¥æ¹èç»æ«å°",
+    "bindingList": [
+     {
+      "uid": "800000001",
+      "isOfficial": true,
+      "isDefault": true,
+      "channelMasterId": "6",
+      "channelName": "å®æ",
+      "nickName": "",
+      "isDelete": false,
+      "gameName": "ææ¥æ¹èï¼ç»æ«å°",
+      "gameId": 3,
+      "roles": [
+       {
+        "serverId": "2",
+        "roleId": "4000000001",
+        "nickname": "Endmin",
+        "level": 60,
+        "isDefault": true,
+        "isBanned": false,
+        "serverType": "as",
+        "serverName": "Asia"
+       }
+      ],
+      "defaultRole": {
+       "serverId": "2",
+       "roleId": "4000000001",
+       "nickname": "Endmin",
+       "level": 60,
+       "isDefault": true,
+       "isBanned": false,
+       "serverType": "as",
+       "serverName": "Asia"
+      }
+     }
+    ],
+    "defaultUid": "800000001"
+   }
+  ],
+  "serverDefaultBinding": {}
+ }
+}
