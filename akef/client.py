@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import asyncio
 import difflib
 import hashlib
@@ -39,9 +37,8 @@ from akef.models import (
 )
 from akef.signing import sign
 
-ALREADY_CHECKED_IN = 10001
-# same code skport uses for "already checked in"
-LOGIN_GONE = 10001
+# skport sends 10001 for both a dead login and "already checked in"
+LOGIN_GONE = ALREADY_CHECKED_IN = 10001
 ATTENDANCE = "/web/v1/game/endfield/attendance"
 CACHE_FOR = {
     "/api/v1/game/endfield/card/detail": 60,
@@ -66,6 +63,10 @@ CHAR_ID = re.compile(r"[0-9a-f]{32}")
 
 def _key(name: str) -> str:
     return re.sub(r"[\W_]+", "", name.casefold())
+
+
+def _dump(payload: dict) -> str:
+    return json.dumps(payload, separators=(",", ":"))
 
 
 def _json(text: str) -> dict:
@@ -180,7 +181,7 @@ class Client:
         headers = self._headers(account=True)
         body = None
         if payload is not None:
-            body = json.dumps(payload, separators=(",", ":"))
+            body = _dump(payload)
             headers["Content-Type"] = "application/json"
         url = c.ACCOUNT_HOST + path + (f"?{urlencode(params)}" if params else "")
         status, text = await self._send(method, url, headers, body)
@@ -204,7 +205,7 @@ class Client:
             await self.login()
 
         query = urlencode(params) if params else ""
-        body = json.dumps(payload, separators=(",", ":")) if payload is not None else None
+        body = _dump(payload) if payload is not None else None
         headers = self._headers()
         if body is not None:
             headers["Content-Type"] = "application/json"
@@ -295,14 +296,12 @@ class Client:
             raise NoRoleError(f"UID {uid} isn't bound to this SKPORT login")
         return found
 
-    async def card(self, uid: int | str | None = None, *, raw: bool = False) -> Card | dict:
+    async def _game(self, path: str, uid: int | str | None) -> Any:
         role = await self.role(uid)
-        data = await self._zonai(
-            "GET",
-            "/api/v1/game/endfield/card/detail",
-            params={"roleId": role.uid, "serverId": role.server_id},
-            role=role,
-        )
+        return await self._zonai("GET", path, params={"roleId": role.uid, "serverId": role.server_id}, role=role)
+
+    async def card(self, uid: int | str | None = None, *, raw: bool = False) -> Card | dict:
+        data = await self._game("/api/v1/game/endfield/card/detail", uid)
         return data if raw else Card.model_validate(data["detail"])
 
     async def character(
@@ -352,23 +351,11 @@ class Client:
         raise UnknownCharacter(f"no operator called {who!r} on UID {role.uid}{hint}")
 
     async def monument(self, uid: int | str | None = None, *, raw: bool = False) -> IndieHard | dict:
-        role = await self.role(uid)
-        data = await self._zonai(
-            "GET",
-            "/api/v1/game/endfield/card/indie-hard",
-            params={"roleId": role.uid, "serverId": role.server_id},
-            role=role,
-        )
+        data = await self._game("/api/v1/game/endfield/card/indie-hard", uid)
         return data if raw else IndieHard.model_validate(data["indieHard"])
 
     async def contract(self, uid: int | str | None = None, *, raw: bool = False) -> ContractDetail | dict:
-        role = await self.role(uid)
-        data = await self._zonai(
-            "GET",
-            "/api/v1/game/endfield/card/crisis-contract",
-            params={"roleId": role.uid, "serverId": role.server_id},
-            role=role,
-        )
+        data = await self._game("/api/v1/game/endfield/card/crisis-contract", uid)
         return data if raw else ContractDetail.model_validate(data["crisisContract"])
 
     async def _gacha_token(self, role: Role) -> str:
@@ -396,7 +383,7 @@ class Client:
         headers = {"User-Agent": c.USER_AGENT}
         body = None
         if payload is not None:
-            body = json.dumps(payload, separators=(",", ":"))
+            body = _dump(payload)
             headers["Content-Type"] = "application/json"
         status, text = await self._send(method, url + (f"?{urlencode(params)}" if params else ""), headers, body)
         data = _json(text)
@@ -507,9 +494,7 @@ class Client:
 
     async def inventory(self, uid: int | str | None = None, *, names: bool = True, raw: bool = False) -> Inventory | dict:
         role = await self.role(uid)
-        data = await self._zonai("GET", "/web/v1/game/endfield/team/user-game-data",
-                                 params={"roleId": role.uid, "serverId": role.server_id}, role=role)
-        data = data.get("userGameData") or {}
+        data = (await self._game("/web/v1/game/endfield/team/user-game-data", role.uid)).get("userGameData") or {}
         if raw:
             return data
         known: dict[str, str] = {}
