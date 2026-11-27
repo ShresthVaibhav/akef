@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from pydantic import AliasChoices, Field, RootModel
 
 from akef.models.base import Model, Tag, Timestamp

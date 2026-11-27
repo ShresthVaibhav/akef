@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from akef.cache import TTLCache
 from akef.enka.build import Build
 from akef.enka.gamedata import GameData
