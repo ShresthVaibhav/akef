@@ -16,4 +16,4 @@ from akef.errors import (
 from akef.models import *  # noqa: F401,F403
 from akef.wiki import WikiPage, WikiPart, wiki_page
 
-__version__ = "0.3.0"
+__version__ = "1.0.0"
