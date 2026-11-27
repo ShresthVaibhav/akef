@@ -1,5 +1,7 @@
 # akef docs
 
+Also on the [docs site](https://shresthvaibhav.github.io/akef/).
+
 - [Getting started](getting-started.md): install, token, first request
 - [Client](client.md): every method and option
 - [Models](models.md): what comes back and the handy properties on it

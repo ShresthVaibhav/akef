@@ -10,7 +10,8 @@ on the in-game stat screen for any operator.
 pip install akef
 ```
 
-Python 3.10+. Full docs in [`docs/`](https://github.com/ShresthVaibhav/akef/blob/main/docs/README.md), a script for every feature in
+Python 3.10+. Full docs on the [docs site](https://shresthvaibhav.github.io/akef/) (also in
+[`docs/`](https://github.com/ShresthVaibhav/akef/blob/main/docs/README.md)), a script for every feature in
 [`examples/`](https://github.com/ShresthVaibhav/akef/tree/main/examples).
 
 ## Usage
