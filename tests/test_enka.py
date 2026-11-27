@@ -58,13 +58,13 @@ async def test_enka_profile(profile):
 
 
 @pytest.mark.parametrize("name", list(ENKA))
-async def test_enka_stats_match_the_site(profile, name):
+async def test_enka_stats(profile, name):
     stats = profile.build(name).stats
     for field, want in ENKA[name].items():
         assert shown(getattr(stats, field)) == shown(want), field
 
 
-async def test_enka_build_details(profile):
+async def test_enka_build(profile):
     arcane = profile.build("Arcane")
     assert [s.level for s in arcane.skills] == [10, 11, 11, 12]
     assert arcane.weapon.name == "Type 42: Solemn Phalanx"
@@ -77,7 +77,7 @@ async def test_enka_build_details(profile):
     assert sum(t.unlocked for t in arcane.talents) == len(arcane.talents)
 
 
-async def test_skport_build_matches_enka(data):
+async def test_skport_vs_enka(data):
     card = skport_card()
     build = build_from_skport(data, card, card.character("Arcane"))
     assert (build.stats.hp, build.stats.atk, build.stats.intellect, build.stats.will) == (6950, 4802, 430, 765)
@@ -87,7 +87,7 @@ async def test_skport_build_matches_enka(data):
     assert essence.badge.startswith("https://static.skport.com/")
 
 
-async def test_weapon_and_essence_stats_match(data, profile):
+async def test_weapon_essence_stats(data, profile):
     card = skport_card()
     enka = profile.build("Arcane").weapon
     assert [(s.name, s.value, s.stat, s.level) for s in enka.skills] == [
@@ -98,13 +98,13 @@ async def test_weapon_and_essence_stats_match(data, profile):
     assert [t.points for t in skport.essence.terms] == [6, 6, 3]
 
 
-async def test_both_sources_share_the_essence_base(data, profile):
+async def test_shared_essence_base(data, profile):
     card = skport_card()
     skport = build_from_skport(data, card, card.character("Arcane")).weapon.essence
     assert skport.icon == profile.build("Arcane").weapon.essence.icon
 
 
-async def test_element_icon_and_essence_badge(profile):
+async def test_icons(profile):
     si = profile.build("Si")
     assert si.element_icon.endswith("/attributeicon/CrystDamageIncrease.png")
     assert si.weapon.essence.badge.endswith(".png")
@@ -119,12 +119,12 @@ def test_tier_unlocked():
     assert not tier_unlocked("chr_x_passive_skill_1_1", latest)
 
 
-def test_talent_icon_path():
+def test_talent_icon():
     assert talent_icon("/ui/ef/icon_talent_x_01.png").endswith("/ui/ef/skillicon/icon_talent_x_01.png")
     assert talent_icon("/ui/ef/spaceshipskillicon/a.png").endswith("/ui/ef/spaceshipskillicon/a.png")
 
 
-async def test_talents_group_like_the_game(profile):
+async def test_talent_groups(profile):
     for build in profile.builds:
         kinds = [t.kind for t in build.talents]
         assert kinds[0] == "attribute" and kinds.count("attribute") == 1
@@ -147,7 +147,7 @@ async def test_enka_player(profile):
     assert player.avatar.endswith(".png") and player.namecard.endswith(".png")
 
 
-def test_skport_player_keeps_the_showcase_first():
+def test_skport_player_order():
     card = skport_card()
     player = player_from_skport(card)
     picked = [c.name for c in card.showcased]
@@ -155,7 +155,7 @@ def test_skport_player_keeps_the_showcase_first():
     assert len(player.roster) == len(card.chars)
 
 
-async def test_enka_answers_are_reused(monkeypatch, data):
+async def test_enka_cache(monkeypatch, data):
     from akef.enka import client as module
 
     calls = []
@@ -173,7 +173,7 @@ async def test_enka_answers_are_reused(monkeypatch, data):
     assert calls == [1, 1]
 
 
-async def test_unknown_operator_on_the_card(data):
+async def test_unknown_operator(data):
     with pytest.raises(akef.UnknownCharacter):
         await akef.Enka(data=data).build(skport_card(), "Nobody")
 
@@ -186,7 +186,7 @@ def test_language_codes():
         language("klingon")
 
 
-async def test_names_match_in_any_language(data):
+async def test_names_any_language(data):
     locs = data._tables["locs"]
     weapon = next(iter(data.weapons.values()))
     for names in locs.values():

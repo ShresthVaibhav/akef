@@ -45,7 +45,7 @@ def test_character():
     assert arcane.skill_level(skill.id) == 10
 
 
-def test_talent_tiers_below_latest_count_as_unlocked():
+def test_lower_tiers_unlocked():
     arcane = card().character("arcane")
     assert len(arcane.talents) == 12
     assert len(arcane.unlocked_talents) == 12
@@ -113,7 +113,7 @@ def test_profile():
     assert p.user_rts.fans == 0
 
 
-def test_card_showcase_order():
+def test_showcase_order():
     card = Card.model_validate(load("card_detail")["data"]["detail"])
     assert [c.id for c in card.showcased] == card.config.char_ids[:len(card.showcased)]
     assert card.showcased[0].name == "Arcane"
@@ -148,7 +148,7 @@ def test_pity_per_banner():
     assert len(p.gifts) == 3
 
 
-def test_free_pulls_dont_move_pity():
+def test_free_pulls():
     from akef import Pull, since_last
 
     rows = [Pull(rarity=6), Pull(rarity=4), Pull(rarity=4, is_free=True), Pull(rarity=5)]
@@ -189,7 +189,7 @@ def test_wiki_page_reading():
     assert (skill.name, skill.kind, skill.icon, skill.text) == ("Gloompurge", "Ultimate", "i.png", "Hits hard.\nTwice.")
 
 
-def test_wiki_tables_keep_links_and_lines():
+def test_wiki_tables():
     from akef import WikiItem
 
     blocks = {
@@ -205,7 +205,7 @@ def test_wiki_tables_keep_links_and_lines():
     assert (table.rows[0][1].links[0].id, table.rows[0][1].links[0].count) == ("109", 5)
 
 
-def test_pulls_round_trip_through_json(tmp_path):
+def test_pulls_json(tmp_path):
     from akef import Pull, Pulls
 
     pulls = Pulls(
@@ -225,7 +225,7 @@ def test_pulls_round_trip_through_json(tmp_path):
     assert header.startswith("uid,group,kind,banner") and first.startswith("4727743200,operators,draw,special")
 
 
-def test_contract_detail_reads_runs_and_indicators():
+def test_contract_detail():
     from akef import ContractDetail
     from akef.models.card import fill
 

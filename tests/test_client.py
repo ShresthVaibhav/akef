@@ -3,7 +3,7 @@ import pytest
 from akef import AlreadyCheckedIn, APIError, AuthError, NoRoleError, UnknownCharacter
 
 
-async def test_check_in_then_already_checked_in(client):
+async def test_check_in_twice(client):
     result = await client.check_in()
     assert [r.name for r in result.rewards] == ["Oroberyl", "Intermediate Combat Record"]
     assert result.rewards[0].count == 90
@@ -28,14 +28,14 @@ async def test_login_flow(client):
     assert len(paths) == 2
 
 
-async def test_logs_in_lazily(client):
+async def test_lazy_login(client):
     roles = await client.roles()
     assert roles[0].uid == "4000000001"
     assert roles[0].game_role == "3_4000000001_2"
     assert client.logged_in
 
 
-async def test_card_sends_role_and_sign(client):
+async def test_card_headers(client):
     card = await client.card()
     assert card.name == "Endmin"
     method, url, headers, _ = client.calls[-1]
@@ -50,7 +50,7 @@ async def test_unknown_uid(client):
         await client.card(123)
 
 
-async def test_relogin_once_on_401(client):
+async def test_relogin_on_401(client):
     await client.login()
     client.fail_next = [401]
     banners = await client.char_banners()
@@ -59,21 +59,21 @@ async def test_relogin_once_on_401(client):
     assert len(grants) == 2
 
 
-async def test_gives_up_after_second_401(client):
+async def test_second_401_fails(client):
     await client.login()
     client.fail_next = [401, 401]
     with pytest.raises(AuthError):
         await client.enums()
 
 
-async def test_account_hides_real_email(client):
+async def test_account_email_hidden(client):
     account = await client.account()
     assert account.region == "JP"
     assert "realEmail" not in account.model_dump(by_alias=True)
     assert not hasattr(account, "real_email")
 
 
-async def test_raw_returns_untouched_data(client):
+async def test_raw(client):
     card = await client.card(raw=True)
     assert card["detail"]["base"]["roleId"] == "4000000001"
     assert "calendar" in await client.attendance(raw=True)
@@ -85,14 +85,14 @@ async def test_raw_returns_untouched_data(client):
     assert (await client.account(raw=True))["hgId"] == "1000000001"
 
 
-async def test_everything_parses(client):
+async def test_all_parse(client):
     assert (await client.attendance()).calendar
     assert await client.weapon_banners()
     assert (await client.enums()).label("weapon_type_sword") == "Sword"
     assert (await client.profile()).id
 
 
-async def test_character_by_name_id_or_list(client):
+async def test_character_lookup(client):
     arcane = await client.character("arcane")
     assert arcane.name == "Arcane"
     by_id = await client.character(arcane.id)
@@ -103,7 +103,7 @@ async def test_character_by_name_id_or_list(client):
     assert len(lookups) == 1
 
 
-async def test_character_typo_suggests_a_name(client):
+async def test_character_typo(client):
     with pytest.raises(UnknownCharacter, match="did you mean 'Laevatain'"):
         await client.character("laevatian")
 
@@ -129,14 +129,14 @@ async def test_monument(client):
     assert url.endswith("/card/indie-hard?roleId=4000000001&serverId=2")
 
 
-async def test_relogin_when_the_login_died(client):
+async def test_relogin_dead_login(client):
     await client.login()
     client.cred = "dead"
     roles = await client.roles()
     assert roles and client.cred != "dead"
 
 
-async def test_check_in_after_the_login_died(client):
+async def test_check_in_dead_login(client):
     await client.login()
     client.cred = "dead"
     result = await client.check_in()
@@ -145,7 +145,7 @@ async def test_check_in_after_the_login_died(client):
         await client.check_in()
 
 
-async def test_login_file_skips_logging_in(tmp_path):
+async def test_login_file(tmp_path):
     from tests.conftest import FakeClient
 
     file = tmp_path / "login.json"
@@ -158,13 +158,13 @@ async def test_login_file_skips_logging_in(tmp_path):
     assert not FakeClient("other token", login_file=file).logged_in
 
 
-async def test_character_by_name_needs_one_request(client):
+async def test_character_one_request(client):
     await client.character("Arcane")
     chars = [u for _, u, _, _ in client.calls if "/card/" in u]
     assert len(chars) == 1 and "/card/detail" in chars[0]
 
 
-async def test_cache_reuses_answers(client):
+async def test_cache_hits(client):
     await client.card()
     await client.card()
     assert len([u for _, u, _, _ in client.calls if "/card/detail" in u]) == 1
@@ -173,7 +173,7 @@ async def test_cache_reuses_answers(client):
     assert len([u for _, u, _, _ in client.calls if "/card/detail" in u]) == 2
 
 
-async def test_same_request_at_once_goes_out_once(client):
+async def test_shared_request(client):
     import asyncio
 
     await client.roles()
@@ -181,14 +181,14 @@ async def test_same_request_at_once_goes_out_once(client):
     assert len([u for _, u, _, _ in client.calls if "/card/detail" in u]) == 1
 
 
-async def test_check_in_refreshes_attendance(client):
+async def test_check_in_clears_attendance(client):
     await client.attendance()
     await client.check_in()
     await client.attendance()
     assert len([u for m, u, _, _ in client.calls if m == "GET" and "/attendance" in u]) == 2
 
 
-async def test_cache_can_be_turned_off():
+async def test_cache_off():
     from tests.conftest import FakeClient
 
     client = FakeClient("token", cache=False)
@@ -197,7 +197,7 @@ async def test_cache_can_be_turned_off():
     assert len([u for _, u, _, _ in client.calls if "/card/detail" in u]) == 2
 
 
-async def test_pulls_after_a_date_stops_early(client):
+async def test_pulls_after_date(client):
     pages = {
         "": {"list": [{"seqId": "3", "gachaTs": "1793000000000", "rarity": 4}, {"seqId": "2", "gachaTs": "1792000000000", "rarity": 6}], "hasMore": True},
         "2": {"list": [{"seqId": "1", "gachaTs": "1780000000000", "rarity": 4}], "hasMore": False},
@@ -222,7 +222,7 @@ async def test_news(client):
     assert "<" not in news[0].text
 
 
-async def test_inventory_names_what_it_can(client):
+async def test_inventory_names(client):
     inv = await client.inventory()
     assert len(inv.operators) == 6 and len(inv.weapons) == 8
     assert any(o.name for o in inv.operators)
@@ -239,7 +239,7 @@ async def test_wiki(client):
         await client.wiki("nope")
 
 
-async def test_debug_log_hides_queries(caplog):
+async def test_debug_log_no_queries(caplog):
     import logging
 
     from akef import Client
@@ -270,7 +270,7 @@ async def test_debug_log_hides_queries(caplog):
     assert not any("secret" in m for m in messages)
 
 
-async def test_pulls_refuse_another_uids_history(client):
+async def test_pulls_wrong_uid(client):
     from akef import Pulls
 
     role = await client.role()
